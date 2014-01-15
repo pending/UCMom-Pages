@@ -1,43 +1,75 @@
 /* CSS Document */
+    .blockbkg {
+      background-color: black;
+      opacity: 90%;
+     
+      background-color: rgba(0,0,0,0.90);
+      width: 100%;
+      min-height: 100%;
+      overflow: hidden;
+      
+      position: fixed;
+      top: 0;
+      left: 0;
+      color: white;
+	  font-family:Arial;
+        font-size:80%;
 
+    }
+    .cont {
+      background-color: white;
+      color: black;
+        font-family:Arial;
+        font-size:13px;
+      border: 1px solid gray;
+      padding: 20px;
+      display:block;
+
+	  border-radius: 10px;
+      background: #fff;
+	  width: 350px;
+      position: relative;
+      margin: 10% auto;
+      background-color:rgba(5, 9, 26, 0.88);
+	  opacity: 0.8;
+      border: 1px solid white;
+	  box-shadow: 0px 0px 0px 15px rgba(109, 144, 182, 0.7); 
+	  color: rgb(163, 135, 135);
+      
+    }
+    div[id^='closebtn'] {
+      width: 10px;
+      height: 10px;
+      padding: 5px;
+      margin: 2px;
+      float: right;
+      top: 0;
+      background-image: url(x.png);
+      background-repeat: no-repeat;
+      background-position:center;
+      background-color: lightgray;
+      display: block;
+    }
+    div[id^='closebtn']:hover {
+      cursor: pointer;
+    }
 /* make link color in header blue */
 a{
 	text-decoration:none;
-	color:#4d96b8;
+	color:#64B9B2;
 
 }
 
-/* make link color red after hovering over it */
+/* make link color navy after hovering over it */
 a:hover{
-	color:#FF0000;
+	color:#E284B9;
 }
 
 
-.arrow_box {
-    height: 40px;
-    width: 40px;
-    background: #88b7d5;
-    margin: 20px 0 20px 20px;
-    position: relative;
-    display: block;
-	content: "";
-	margin-left:810px;
-}
-
-.arrow_box:after {
-    content: "";
-    position: absolute;
-    right: -30px;
-    top: -10px;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-left: 30px solid #88b7d5; 
-	z-index: -2;
-} 
 
 body{
 	/*back-up font*/
-	font-family:Courier-New;
+	font-family:Arial;
 	background-color:white;
 	color:#E284B9;
 	
@@ -49,6 +81,12 @@ body h3{
 	margin-left:auto;
 	margin-right:auto;
 	
+}
+
+
+.caption{
+	
+	font-size: 13px;
 }
 
 #fdBtn
@@ -79,12 +117,6 @@ div#fdBtn:hover
 } */
 
 /*Modify the title of each lactation room*/
-.firstLine{
-	font-family:Orator Std,Courier-New,sans-serif;
-	margin-left:auto;/* make the title appear in the center*/
-	margin-right:auto;
-	font-size:16px;	
-}
 
 
 /*how to make the image blocks appear in the center of the page*/
@@ -98,14 +130,14 @@ div#fdBtn:hover
 /* set blue color for the homepage */
 #home_body{
 	
-	background-color:#82CAFA;
+	background-color:#02394B;
 	z-index: -2136;
 
 }
 
 /* make the link for home pink */
 #homeLink, #loginLink{
-	color:#E6274D;
+	color:#387CD3;
 }
 
 .inputbox
@@ -113,26 +145,28 @@ div#fdBtn:hover
 	margin-left:30px;
 	margin-right:auto;
 }
-
+input{
+	border-color:black;
+}
 /* make the text in the login button be pink when hovered over */
 input[type=submit]:hover{
-	color:pink;
+	border-color:black;
 }
+
 
 input[type=submit] {
 
-	padding-top:9px;
-	padding-bottom:10px;
+	
 	color:white;
-	font-family: Courier-New;
-	letter-spacing:1px;
-	width:60px;
+	font-family: Arial;
+	width:70px;
+	height:30px;
 	cursor: pointer;
-	background-color:transparent;
-	border-color:transparent;
+	background-color:rgb(100, 82, 96);
+	border-color:transparent; 
 	font-weight:bold;
 	font-size: 14px;
-	margin-left: 2px;
+	margin-left: 130px;
 
 }
 
@@ -148,6 +182,7 @@ input[type=submit] {
 	margin-left:auto;
 	margin-right:auto;
 	font-weight:bold;
+	
 }
 
 /* styling the text in the linkheader table */
@@ -176,12 +211,14 @@ input[type=submit] {
 {
 	background-color:#9cd2eb;
 	display:block;
-	height:200px;
+	height:250px;
 	width:400px;
-	border:1px solid #9cd2eb;
+	border:5px solid #9cd2eb;
 	margin-left:auto;
 	margin-right:auto;
 	border-radius:5px;
+	border-color:black;
+
 
 }
 
@@ -191,13 +228,15 @@ input[type=submit] {
 	padding:0px;
 
 }
-/* styling the modal window */
+
+
+/* styling the modal window */ /*
 .modalWindow {
         position: fixed;
-        font-family:Orator Std,Courier-New,sans-serif;
+        font-family:Arial;
         font-size:80%;
         top: 0; /*make the background appear the same in whole monitor*/
-        right: 0;
+      /*  right: 0;
         bottom: 0;
         left: 0;
         background: rgba(0,0,0,0.8);
@@ -221,26 +260,26 @@ input[type=submit] {
 		width: 350px;
         position: relative;
         margin: 10% auto;
-		padding:10px 10px 13px 50px;
+		
 		background: -moz-linear-gradient(#fff, #999);
 		background: -webkit-linear-gradient(#fff, #999);
 		background: -o-linear-gradient(#fff, #999);
 		border-radius: 10px;
         background: #fff;
-		word-spacing:10px;
-		letter-spacing:3px;
-		background-color:#CDEEF1;
+		
+		
+		background-color:rgba(5, 9, 26, 0.88);
 		opacity: 0.8;
 		border: 1px solid white;
 		box-shadow: 0px 0px 0px 15px rgba(109, 144, 182, 0.7); 
-		color: rgb(134, 76, 76);
+		color: rgb(163, 135, 135);
 		
 		
 }
 
 
 /* modal window controls */
-
+/*
 .close {
     background: #606061;
     color: #FFFFFF;
@@ -264,10 +303,10 @@ input[type=submit] {
 	  z-index: 999999;
  }
  
-
+*/
 p{
 	font-family:Perpetua Titling MT;
-	color:#4d96b8;
+	color:#387CD3;
 	font-size:50px;
 }
 
@@ -278,9 +317,10 @@ p span{
 	font-size:20px;
 } 
 
+
 /* size the image blocks */
 .picture{
-	border:5px solid #4d96b8;
+	border:5px solid #387CD3;
 	display:inline-block;
 	border-radius:7px;
 	background-color:#FFFFFF;
@@ -299,10 +339,8 @@ p span{
 
 .smallLine{
 
-	font-family:Orator Std,Courier-New,sans-serif;
+	font-family:Arial;
 	font-size:16px;
-    padding-left: 50px;
-	padding-right: 50px; 
 }  
 
 /* text area for feedback form */	  
@@ -319,4 +357,8 @@ textarea {
 #fback {
 	z-index: -8923891823;
 	
+}
+
+#newevent {
+	list-style: none;
 }

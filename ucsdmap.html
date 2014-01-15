@@ -68,7 +68,7 @@ html, body { height: 100%; }
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent(contentString); 
 				infowindow.open(map,marker);
-				document.getElementById("directionsPanel").innerHTML = info;
+				document.getElementById("infoPanel").innerHTML = info;
 				});
 				
 			// save the info we need to use later for the side panel
@@ -77,7 +77,7 @@ html, body { height: 100%; }
 			htmls[i] = html;
 			
 			// after marker is added, add a line to the side panel html (links room name to marker location on map)
-			sidePanelHtml += '<ul><li><a href="javascript:myclick(' + (rooms.length-1) + ')">' + name + '</a><br></li></ul>';
+			sidePanelHtml += '<option value="' + (rooms.length-1) + '">' + name + '</option>';
 			
 			return marker;
 		}
@@ -120,7 +120,11 @@ html, body { height: 100%; }
 
 		// This function picks up the click and opens the corresponding info window
 		function myclick(i) {
-		  google.maps.event.trigger(rooms[i], "click");
+		var w = document.getElementById("menu1").options[ document.getElementById("menu1").selectedIndex ].value;
+		//alert(w);
+		if(w != -1){
+		  google.maps.event.trigger(rooms[w], "click");
+		  }
 		}
 
 
@@ -140,7 +144,7 @@ html, body { height: 100%; }
 		  // create the map
 		  var myOptions = {
 			zoom: 15,
-			center: new google.maps.LatLng(32.8806, -117.2362),
+			center: new google.maps.LatLng(32.8747, -117.2362),
 			mapTypeControl: true,
 			mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
 			navigationControl: true,
@@ -156,34 +160,34 @@ html, body { height: 100%; }
 				});
 			  
 				room1 = [32.88018, -117.23661]; //Price Center
-				room1Info = "<p>Room: Green Room (Room 2.115, across from Price Center Ballroom)</p> <p>Access: 8 am - 11 pm every day, including weekends. Hours vary during summer and holidays. Access code required. </p>  </p> <p>Building Contact: John Payne, (858) 534-8986, jpayne@ucsd.edu </p> <div class=\"innerPicture\"><img src = \"./images/PriceCtrGreen_2.115.jpg\"><div><hr />" // Mingshang, look at this as an example
+				room1Info = "<p><b>Finding the Room:</b> Green Room (Room 2.115, across from Price Center Ballroom)</p> <p><b>Access:</b> 8 am - 11 pm every day, including weekends. Hours vary during summer and holidays. Access code required. </p>  </p> <p><b>Building Contact:</b> John Payne, (858) 534-8986, jpayne@ucsd.edu </p> <div class=\"innerPicture\"><img src = \"./images/mapImages/PriceCtrGreen_2.115.jpg\"><div>" // Mingshang, look at this as an example
 				
 				room2 = [32.87425, -117.24086]; //Galbraith Hall
-				room2Info = "<p> Room: #252. Enter through north side main entrance double doors. Follow signs to lactation room to the left. Proceed through the double doors marked \"EXIT ROUTE\" to small inner corridor to #252.</p> <p>Access: M-F 7:30am-5pm </p> <p>Building Contact: Laura Manning, (858)534-4776,  lmanning@ucsd.edu</p> <p>Access: </p> <div class=\"innerPicture\"><img src = \"./images/GalbraithHall_252.jpg\"><div><hr />" //FILL IN (MINGSHAN)
+				room2Info = "<p> <b>Finding the Room:</b> #252. Enter through north side main entrance double doors. Follow signs to lactation room to the left. Proceed through the double doors marked \"EXIT ROUTE\" to small inner corridor to #252.</p> <p><b>Access:</b> M-F 7:30am-5pm </p> <p><b>Building Contact:</b> Laura Manning, (858)534-4776,  lmanning@ucsd.edu</p> <p>Access: </p> <div class=\"innerPicture\"><img src = \"./images/mapImages/GalbraithHall_252.jpg\"><div>" //FILL IN (MINGSHAN)
 				
 				room3 = [32.8777, -117.2371]; //Leichtag 2nd or 3rd floor
-				room3Info = "<p>Room: 2nd & 3rd Floor</p> <p>Access: Standard operating hours.</p>  <p>Building Contact: Evelyn Evans, (858)822-5126, erevans@ucsd.edu </p> <div class=\"innerPicture\"><img src = \"./images/Leichtag_2ndFloor.jpg\"><h5>2nd Floor</h5> <div class=\"innerPicture\"><img src = \"./images/Leichtag_3rdFloor.jpg\"><div> <h5>3rd Floor</h5><hr />"
+				room3Info = "<p><b>Finding the Room:</b> 2nd & 3rd Floor</p> <p><b>Access:</b> Standard operating hours.</p>  <p><b>Building Contact:</b> Evelyn Evans, (858)822-5126, erevans@ucsd.edu </p> <div class=\"innerPicture\"><img src = \"./images/mapImages/Leichtag_2ndFloor.jpg\"><h5>2nd Floor</h5> <div class=\"innerPicture\"><img src = \"./images/mapImages/Leichtag_3rdFloor.jpg\"><div> <h5>3rd Floor</h5>"
 				
 				room4 = [32.88040, -117.23320]; //Structural and Materials Engineering
-				room4Info = "<p>Room: 4th Floor Women's Restroom. Located adjacent to building's center elevator</p> <p>Access: M-F 7am-7pm</p> <p>Building Contact: Laurance Berman, (858)534-3528, lberman@ucsd.edu</p><div class=\"innerPicture\"><img src = \"./images/SME_4thFloor.jpg\"><hr />" 
+				room4Info = "<p><b>Finding the Room:</b> 4th Floor Women's Restroom. Located adjacent to building's center elevator</p> <p><b>Access:</b> M-F 7am-7pm</p> <p><b>Building Contact:</b> Laurance Berman, (858)534-3528, lberman@ucsd.edu</p><div class=\"innerPicture\"><img src = \"./images/mapImages/SME_4thFloor.jpg\">" 
 				
 				room5 = [32.8779, -117.2345]; //Biomedical Science Building
-				room5Info = "<p>Room: Next to B241 in the basement; Lactation room accessible via the women's restroom.</p> <p>Access: Standard operating hours.</p>  <p>Building Contact: Pilar King, pking@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/BSB_B241.jpg\"><hr />" 
+				room5Info = "<p><b>Finding the Room:</b> Next to B241 in the basement; Lactation room accessible via the women's restroom.</p> <p><b>Access:</b> Standard operating hours.</p>  <p><b>Building Contact:</b> Pilar King, pking@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/mapImages/BSB_B241.jpg\">" 
 				
 				room6 = [32.8841, -117.2334]; //Computer Science and Engineering Building 
-				room6Info = "<p> Room: </p> <p>Access: </p>  <p>Building Contact: </p> <div class=\"innerPicture\"><img src = \"./images/EBU-3B_3113.jpg\"><hr />" 
+				room6Info = "<p><b> Finding the Room:</b> </p> <p><b>Access:</b> </p>  <p><b>Building Contact:</b> </p> <div class=\"innerPicture\"><img src = \"./images/mapImages/EBU-3B_3113.jpg\"><hr />" 
 				
 				room7 = [32.86906, -117.25116]; //Nierenberg
-				room7Info = "<p> Room: 416C. Enter double doors left of northwest corner of building.  Take elevator to 4th floor.  Proceed through hallway to Room #416.  Enter  inner corridor to #416C.</p> <p>Access: 7:30am-5pm \(central front doors\)</p>  <p>Building Contact: Will Rivera, (58)534-1875, wrivera@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/Nierenberg_416C.jpg\"><hr />" //FILL IN (MINGSHAN)
+				room7Info = "<p> <b>Finding the Room:</b> 416C. Enter double doors left of northwest corner of building.  Take elevator to 4th floor.  Proceed through hallway to Room #416.  Enter  inner corridor to #416C.</p> <p><b>Access:</b> 7:30am-5pm \(central front doors\)</p>  <p><b>Building Contact:</b> Will Rivera, (58)534-1875, wrivera@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/mapImages/Nierenberg_416C.jpg\">" //FILL IN (MINGSHAN)
 				
 				room8 = [32.877848, -117.234633]; //Women's Center
-				room8Info = "<p>Room: 2nd floor (check in at front desk)</p> <p>Access: Academic Year Hours: 9 a.m. – 7 p.m. Monday-Thursday 9 a.m. – 3 p.m., Fridays.</p>  <p>Building Contact: Jessica Geipel, (858) 822-0074, jgeipel@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/WomensCtr.jpg\"><hr />" //FILL IN (MINGSHAN)
+				room8Info = "<p><b>Finding the Room:</b> 2nd floor (check in at front desk)</p> <p><b>Access:</b> Academic Year Hours: 9 a.m. – 7 p.m. Monday-Thursday 9 a.m. – 3 p.m., Fridays.</p>  <p><b>Building Contact:</b> Jessica Geipel, (858) 822-0074, jgeipel@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/mapImages/WomensCtr.jpg\">" //FILL IN (MINGSHAN)
 				
 				room9 = [32.89112, -117.24263]; //Torrey Pines North 
-				room9Info = "<p>Room: Plaza Level</p> <p>Access: Standard operating hours</p> <p>Building Contact: Scott Day, (858) 822-4238, scday@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/TorreyPinesNorth_130.jpg\"><hr />" //FILL IN (MINGSHAN)
+				room9Info = "<p><b>Finding the Room:</b> Plaza Level</p> <p><b>Access:</b> Standard operating hours</p> <p><b>Building Contact:</b> Scott Day, (858) 822-4238, scday@ucsd.edu</p> <div class=\"innerPicture\"><img src = \"./images/mapImages/TorreyPinesNorth_130.jpg\">" //FILL IN (MINGSHAN)
 				
 				room10 =[32.8809, -117.2256]; //Thornton Hospital 
-				room10Info = "<p>Room: 320 West wing, 3rd floor</p> <p>Access: Always open. No key or code required.</p>  <p>Building Contact: (858) 657-6412</p> <div class=\"innerPicture\"><img src = \"./images/ThorntonHospital.jpg\"> <hr />" //FILL IN (MINGSHAN)
+				room10Info = "<p><b>Finding the Room:</b> 320 West wing, 3rd floor</p> <p><b>Access:</b> Always open. No key or code required.</p>  <p><b>Building Contact: </b>(858) 657-6412</p> <div class=\"innerPicture\"><img src = \"./images/mapImages/ThorntonHospital.jpg\"> " //FILL IN (MINGSHAN)
 									
 				createMarker(room1, "UCSD Price Center" ,"<b> Price Center Room </b> <hr />", room1Info );
 				createMarker(room2, "Galbraith Hall", "<b> Galbraith Hall Room </b> <hr />",room2Info );
@@ -197,7 +201,8 @@ html, body { height: 100%; }
 				createMarker(room10, "Thornton Hospital" ,"<b> Thornton Hospital Room </b> <hr />",room10Info);	
 				
 
-				document.getElementById("side_bar").innerHTML = sidePanelHtml;
+				
+				document.getElementById("side_bar").innerHTML = "<select name='menu1' id='menu1' onchange='javascript:myclick(1)'><option value='-1'>---Choose a Room Location---</option>" + sidePanelHtml + "</select>";
 			  
 			}
  
@@ -205,22 +210,29 @@ html, body { height: 100%; }
 			  { 
 				size: new google.maps.Size(150,50)
 			  });
+			
     
 </script> 
 
 </head> 
 <body style="margin:0px; padding:0px;" onload="initialize();"> 
+
  
     <table border="1"> 
       <tr> 
-        <td valign="top"> 
-           <div id="map_canvas" style="width: 800px; height: 655px"></div> 
-        </td> 
-        <td valign="top" style="width: 200px;"> 
+	    <td valign="top" style="width: 200px;"> 
 			<center><h4>Click on a Location to Find Room on Map</h4></center>
            <div id="side_bar"></div> 
+		   <hr />
+		   <div id="infoPanel"></div> 
+
         </td> 
-		<td valign="top" style="width: 400px;"> 	
+        <td valign="top"> 
+           <div id="map_canvas" style="width: 800px; height: 1000px"></div> 
+        </td> 
+      
+		<td valign="top" style="width: 400px;"> 
+		<center><h4>Car/Biking/Walking Directions</h4></center>		
            <div id="directionsPanel"></div> 
         </td> 
       </tr> 
